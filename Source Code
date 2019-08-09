@@ -1,0 +1,97 @@
+// Program from Leet Code
+//Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+//You may assume that each input would have exactly one solution, and you may not use the same element twice.
+//Example:
+//Given nums = [2, 7, 11, 15], target = 9,
+//Because nums[0] + nums[1] = 2 + 7 = 9,
+//return [0, 1].
+
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+//Given a vector
+//Get a specific list of numbers & a target 
+//Check weather items in the list add up to target
+     //Must be different INDECES 
+    //Assume only one possible solution
+   //Return list (vector) of indeces 
+
+ vector<int> twoSum(vector<int>& nums, int target) {
+     
+     //Vector to be returned
+     vector <int> finalVec;
+     
+    //Check first wit second, third, fourth, .... size() -1;
+   //Check second with third, fourth, fifth, size() -1;
+  //Check third with fourth, fifhte, ... size ()- 1;
+  
+  for (int i = 0; i< nums.size(); i++){
+
+    for(int j = i+1; j< nums.size(); j++){
+        //Match
+        if(nums[i]+nums[j]==target){
+            cout<<"MATCH: "<< nums[i]<<"  "<< nums[j]<<endl;
+            
+            //if numebrs are the same do not push
+            if(i!=j){
+                  finalVec.push_back(nums[i]);
+                  finalVec.push_back(nums[j]);
+                  //ONLY ONE solution
+                  return finalVec;
+                }
+          
+            }
+    }
+    //no match
+    return finalVec;
+    
+    }
+    
+}
+int main(){
+    
+    //VECTOR
+    vector<int> myVec = {1,3,3,4,5};
+    vector <int> finalVec;
+    
+    //Target
+    int target  = 6;
+    
+    //Function to return vector
+    finalVec = twoSum(myVec, target);
+    
+    //Output Indeces
+    for(int i = 0; i< finalVec.size(); i++){
+        cout<<finalVec[i] <<" ";
+        }
+}
+
+
+//Solution uploaded
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+     
+        vector<int> finalVec;
+        for (int i = 0; i< nums.size(); i++){
+            for(int j = i+1; j< nums.size(); j++){
+                //Match
+                if(nums[i]+nums[j]==target){
+                    //if numebrs are the same do not push
+                    if(i!=j){
+                        finalVec.push_back(i);
+                        finalVec.push_back(j);
+                        return finalVec;
+                    }
+                }
+            }
+        
+    }
+
+
+  return finalVec;
+        
+    }
+};
